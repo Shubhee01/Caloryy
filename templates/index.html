@@ -15,31 +15,31 @@
       <p id="description" class="description text-center">Let's calculate the calories burnt by you~</p>
     </header>
 
-    <form id="survey-form">
+    <form action="/calories" id="survey-form" method="POST">
       <div class="form-group">
-        <label id="name-label" for="name">Name</label>
-        <input type="text" name="name" id="name" class="form-control" required placeholder="Enter your name">
+        <label id="name-label">Name</label>
+        <input type="text" class="form-control" required placeholder="Enter your name">
       </div>
       <div class="form-group">    
         <p>Gender</p>
-        <label for="definitely">
-            <input type="radio" name="user-recommend" id="female" class="input-radio" value="1"> Female
+        <label for="gender">
+            <input type="radio" name="gender" id="female" class="input-radio" value="1"> Female
         </label>
-        <label for="maybe">
-            <input type="radio" name="user-recommend" id="male" class="input-radio" value="0"> Male
+        <label for="male">
+            <input type="radio" name="gender" id="male" class="input-radio" value="0"> Male
         </label>
     </div>
       <div class="form-group">
         <label id="name-label" for="age">Age</label>
-        <input type="number" name="age" id="age" class="form-control" required placeholder="Enter your age">
+        <input type="text" name="age" id="age" class="form-control" required placeholder="Enter your age">
       </div>
       <div class="form-group">
         <label id="name-label" for="height">Height</label>
-        <input type="number" name="height" id="height" class="form-control" required placeholder="Enter your height in cm">
+        <input type="text" name="height" id="height" class="form-control" required placeholder="Enter your height in cm">
       </div>
       <div class="form-group">
         <label id="name-label" for="weight">Weight</label>
-        <input type="number" name="weight" id="weight" class="form-control" required placeholder="Enter your weight in kg">
+        <input type="text" name="weight" id="weight" class="form-control" required placeholder="Enter your weight in kg">
       </div>
       <div class="form-group">
         <label for="dropdown">Which activity are you performing?</label>
@@ -54,20 +54,28 @@
       </div>
       <div class="form-group">
         <label id="name-label" for="duration">Duration</label>
-        <input type="number" name="duration" id="duration" class="form-control" required placeholder="Enter your time duration in mins">
+        <input type="text" name="duration" id="duration" class="form-control" required placeholder="Enter your time duration in mins">
       </div>
       <div class="form-group">
         <label id="name-label" for="hrate">Heart Rate</label>
-        <input type="number" name="hrate" id="hrate" class="form-control" required placeholder="Enter your Heart Rate(pulse)">
+        <input type="text" name="hrate" id="hrate" class="form-control" required placeholder="Enter your Heart Rate(pulse)">
       </div>
       <div class="form-group">
         <label id="name-label" for="temperature">Body temperature</label>
-        <input type="number" name="temperature" id="temperature" class="form-control" required placeholder="Enter your body temperature in F">
+        <input type="text" name="temperature" id="temperature" class="form-control" required placeholder="Enter your body temperature in F">
       </div>
       <div class="form-group">
-        <button type="submit" id="submit" name="submit" class="submit-button">Submit</button>
+        <button type="submit" class="submit-button">Submit</button>
       </div>
     </form>
+    {% if value==True %}
+    <div class="card">
+      <div class="card-body">
+        <span>Your burned calories are :{{answer}}</span>
+        <a href="/" type="button" class="btn btn-secondary">Close and Refresh</a>
+      </div>
+    </div>
+    {% endif %}
   </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

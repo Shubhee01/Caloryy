@@ -2,7 +2,6 @@
   * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
   }
   
   body {
@@ -23,8 +22,8 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-   }
-   h1, p, label, button {
+}
+  h1, p, label, button {
     color: white;
 }
   .container #survey-form .form-group .submit-button {

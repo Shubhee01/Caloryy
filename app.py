@@ -1,31 +1,28 @@
 
-from flask import Flask, render_template
-
+from flask import Flask, render_template, request,redirect
+from main import caloriespred
 app = Flask(__name__)
+
+value=False
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    value=False
+    return render_template("index.html",value=value)
 
-@app.route('/calories',methods=['POST','GET'])
+@app.route('/calories',methods=['POST'])
 def result():
-    from main import caloriespred
     if request.method == 'POST':
-        p=request.form.get("p"),
-        g=request.form.get("g"),
-        bp=request.form.get("bp"),
-        st=request.form.get("st"),
-        insulin=request.form.get("insulin"),
-        bmi=request.form.get("bmi"),
-        dpf=request.form.get("dpf"),
+        gender=request.form.get("gender"),
         age=request.form.get("age"),
-        x=diabetes_predict(int(p[0]),int(g[0]),int(bp[0]),int(st[0]),int(insulin[0]),float(bmi[0]),float(dpf[0]),int(age[0]))
-    y = Prediction.query.filter_by(user_name=session['user_name']).first()
-    current_date = datetime.date.today()
-    y.diabetes=x+"/"+str(current_date)
-    db.session.add(y)
-    db.session.commit()
-    return redirect('/summary')
+        height=request.form.get("height"),
+        weight=request.form.get("weight"),
+        duration=request.form.get("duration"),
+        heartrate=request.form.get("hrate"),
+        bodytemp=request.form.get("temperature"),
+        x=caloriespred(int(gender[0]),int(age[0]),float(height[0]),float(weight[0]),float(duration[0]),float(heartrate[0]),float(bodytemp[0]))
+        value=True
+    return render_template('index.html',answer=x,value=value)
 
 if __name__ == "__main__":
     app.run(debug=True)
