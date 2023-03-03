@@ -13,6 +13,7 @@ def index():
 @app.route('/calories',methods=['POST'])
 def result():
     if request.method == 'POST':
+        name=request.form.get("name")
         gender=request.form.get("gender"),
         age=request.form.get("age"),
         height=request.form.get("height"),
@@ -22,7 +23,7 @@ def result():
         bodytemp=request.form.get("temperature"),
         x=caloriespred(int(gender[0]),int(age[0]),float(height[0]),float(weight[0]),float(duration[0]),float(heartrate[0]),float(bodytemp[0]))
         value=True
-    return render_template('index.html',answer=x,value=value)
+    return render_template('index.html',answer=x,value=value,name=name)
 
 if __name__ == "__main__":
     app.run(debug=True)
