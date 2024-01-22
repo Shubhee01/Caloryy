@@ -1,4 +1,4 @@
-#Caloryy - Predict Calories Burnt Prediction
+#Caloryy - Predict Calories Burnt 
 
 #Overview
 
